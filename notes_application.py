@@ -75,7 +75,7 @@ def main():
         note1.search(m)
     elif choice == '3':
         if note1.list() is None:
-            print "No notes found"
+            print "No notes found here"
         
     
 if __name__ == "__main__":
