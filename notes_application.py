@@ -67,13 +67,9 @@ def main():
     note1.create("Hello World")
     note1.create("Hello Pluto")
     note1.create("Jupiter Hello")
-    #note1.list()
     
     m=raw_input('Enter the search string: ')
     note1.search(m)
-    #note1.edit(2,"Hello galaxy")
-    #note1.list()
-    
         
     
     
