@@ -1,13 +1,6 @@
 #!/usr/bin/env python2
 #encoding: UTF-8
 
-# To change this license header, choose License Headers in Project Properties.
-# To change this template file, choose Tools | Templates
-# and open the template in the editor.
-"""
-
-
-"""
 class NotesApplication(object):
     
     
@@ -31,20 +24,7 @@ class NotesApplication(object):
         
     def get(self,note_id):
         return self.notes[note_id]
-    
-    """
-    
-    def search(self, search_text):
-        for text in search_text:
-            for x in self.notes:
-                s=x.split(' ')
-                for value in s:
-                    for v in value:
-                        if text in v:
-                            print x,"\n"
-    
-    """
-    
+      
     def search(self, search_text):
         print "Showing results for search '%s': \n" % search_text
         not_found = True
