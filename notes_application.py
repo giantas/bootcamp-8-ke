@@ -61,16 +61,22 @@ class NotesApplication(object):
         self.notes[note_id] = new_content
 
 def main():
-    note1 = NotesApplication("Paul")
+    auth_name = raw_input("Enter note author: ")
+    note1 = NotesApplication(auth_name)
     
-    note1.create("Hello World")
-    note1.create("Hello Pluto")
-    note1.create("Jupiter Hello")
+    choice = raw_input("Choose you preferred option: \n\t1. Add note\n\t2. Edit note\n\t3. Print notes\nSelection:")
     
-    m=raw_input('Enter the search string: ')
-    note1.search(m)
+    if choice == '1':
+        new_note = raw_input("Enter note content: ")
+        note1.create(new_note)
+        print "Note added!\n"
+    elif choice == '2':
+        m = raw_input('Enter the search string: ')
+        note1.search(m)
+    elif choice == '3':
+        if note1.list() is None:
+            print "No notes found"
         
-    
     
 if __name__ == "__main__":
     main()
