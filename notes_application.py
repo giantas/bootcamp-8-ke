@@ -13,8 +13,8 @@ class NotesApplication(object):
     
     def __init__(self,author):
         self.author = author
-        notes=[]
-        self.notes=notes
+        notes = []
+        self.notes = notes
         
         
     def create(self, note_content):
@@ -28,10 +28,6 @@ class NotesApplication(object):
             print self.get(i)
             print "By Author: %s" % self.author
             print ""
-        """
-        print "Note ID: %d"%self.note_id
-        print "%s"%self.note_content
-        """
         
     def get(self,note_id):
         return self.notes[note_id]
@@ -51,12 +47,15 @@ class NotesApplication(object):
     
     def search(self, search_text):
         print "Showing results for search '%s': \n" % search_text
+        not_found = True
         for x in self.notes:
             if search_text in x:
                 print "Note ID: %s" % self.notes.index(x)
                 print x,"\n"
+                not_found = False
         
-        #print "Found 0 matches"
+        if not_found: 
+            print "Found 0 matches"
         
     def edit(self, note_id, new_content):
         self.notes[note_id] = new_content
