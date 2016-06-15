@@ -17,7 +17,7 @@ class NotesApplication(object):
     def list(self):
         
         for i in range(len(self.notes)):
-            print "Note ID: %d" % i
+            print "\nNote ID: %d" % i
             print self.get(i)
             print "By Author: %s" % self.author
             print ""
@@ -27,16 +27,18 @@ class NotesApplication(object):
       
     def search(self, search_text):
         print "Showing results for search '%s': \n" % search_text
-        not_found = True
-        for x in self.notes:
-            if search_text in x:
-                print "Note ID: %s" % self.notes.index(x)
-                print x,"\n"
-                not_found = False
-        
+        for note in self.notes:
+            if search_text in note:
+                print "\nNote ID: %s" % self.notes.index(note)
+                print note,"\n"
+        """
         if not_found: 
             print "Found 0 matches"
-        
+        """
+    
+    def num_of_notes(self):
+        return len(self.notes)
+    
     def edit(self, note_id, new_content):
         self.notes[note_id] = new_content
 
@@ -44,18 +46,25 @@ def main():
     auth_name = raw_input("Enter note author: ")
     note1 = NotesApplication(auth_name)
     
-    choice = raw_input("Choose you preferred option: \n\t1. Add note\n\t2. Edit note\n\t3. Print notes\nSelection:")
+    choice = raw_input("\nSelect you preferred option: \n\t1. Add note\n\t2. Edit note\n\t3. Print notes\n\t4. Exit\nSelection: ")
     
-    if choice == '1':
-        new_note = raw_input("Enter note content: ")
-        note1.create(new_note)
-        print "Note added!\n"
-    elif choice == '2':
-        m = raw_input('Enter the search string: ')
-        note1.search(m)
-    elif choice == '3':
-        if note1.list() is None:
-            print "No notes found here"
+    while choice is not '4':
+        if choice == '1':
+            new_note = raw_input("Enter note content: ")
+            note1.create(new_note)
+            print "Note added!\n"
+        elif choice == '2':
+            edit = raw_input('Enter the search string: ')
+            note1.search(edit)
+        elif choice == '3':
+            if note1.num_of_notes() == 0:
+                print "No notes found here"
+            else:
+                note1.list()
+        elif choice == '4':
+            exit()
+            
+        choice = raw_input("Choose you preferred option: \n\t1. Add note\n\t2. Edit note\n\t3. Print notes\nSelection:")
         
     
 if __name__ == "__main__":
