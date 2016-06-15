@@ -7,6 +7,8 @@
 # 0,1,1,2,3,5,8
 
 def reason(n = 7):
+    if evaluate(n) is False:
+        return "Error! n must be a positive natural number!"
     if n == 1:
         return "[0]"
     elif n == 2:
@@ -18,6 +20,12 @@ def reason(n = 7):
             sum = prime_list[i - 3] + prime_list[i - 2]
             prime_list.append(sum)
     return prime_list
+
+def evaluate(integer):
+    if isinstance(integer,(int)) is False:
+        return False
+    if integer <= 0:
+        return False
 
 def main():
     answer = input("Enter nth value: ")
